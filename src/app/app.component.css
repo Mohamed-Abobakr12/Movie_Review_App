@@ -1,0 +1,12 @@
+.autocomplete {
+    width: 5000px; 
+  }
+
+.poster {
+width: 50px; 
+height: auto;
+}
+
+::ng-deep .autocomplete .mat-mdc-autocomplete-panel {
+    width: 5000px; 
+  }
