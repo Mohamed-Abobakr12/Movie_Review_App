@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,51 +9,43 @@ interface MovieSearchResult {
     Title: string;
     Poster: string;
   }[];
+  Error?: string;
 }
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div>
-      <mat-form-field>
-        <input matInput [formControl]="titleControl" [matAutocomplete]="auto" placeholder="Enter movie title" />
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let suggestion of filteredSuggestions | async" [value]="suggestion.Title">
-            <img [src]="suggestion.Poster" alt="{{ suggestion.Title }} poster" />
-            {{ suggestion.Title }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <button (click)="search()">Search</button>
-    </div>
-    <div *ngIf="movie">
-      <h2>{{ movie.Title }}</h2>
-      <img [src]="movie.Poster" alt="{{ movie.Title }} poster" />
-      <h3>Top 10 Reviews:</h3>
-      <ul>
-        <li *ngFor="let review of reviews">{{ review }}</li>
-      </ul>
-    </div>`,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  titleControl = new FormControl();
-  title = 'My App';
-  suggestions: any[] = [];
-  filteredSuggestions: Observable<any[]>;
+export class AppComponent implements OnInit{
   movie: any;
+  title = 'My App';
   reviews: string[] = [];
+  suggestions: any[] = [];
+  titleControl = new FormControl();
+  filteredSuggestions: Observable<any[]>;
 
+  ngOnInit() {
+    const numStars = 10;
+    const starContainer = document.querySelector('.star-container') as HTMLElement;
+  
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.zIndex = i.toString();
+      star.style.animationDuration = Math.random() * 5 + 5 + 's';
+      starContainer.appendChild(star);
+    }
+  }
+  
   constructor(private http: HttpClient) {
     this.titleControl.valueChanges.subscribe((value) => 
     {
-        this.http.get<MovieSearchResult>(`http://www.omdbapi.com/?s=${value}&apikey=6984245c`).subscribe((data) => 
-        {
-          
-          if (data.Search) {this.suggestions = data.Search;} 
-          else {console.error('Error: data returned from OMDb API is not in the expected format');}
-        });
+      this.http.get<MovieSearchResult>(`http://www.omdbapi.com/?s=${value}&apikey=6984245c`).subscribe((data) => {if (data.Search) {this.suggestions = data.Search;} });
     });
-
+  
     this.filteredSuggestions = this.titleControl.valueChanges.pipe(
       startWith(''),
       

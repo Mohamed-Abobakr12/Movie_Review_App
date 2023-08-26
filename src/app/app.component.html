@@ -1,0 +1,24 @@
+<div class="star-container">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+</div>
+
+<div class="input-container">
+    <input [formControl]="titleControl" placeholder="Enter movie title" />
+    <div *ngIf="filteredSuggestions | async as suggestions" class="suggestions-container">
+      <div *ngFor="let suggestion of suggestions" (click)="titleControl.setValue(suggestion.Title)">
+        <img [src]="suggestion.Poster" alt="{{ suggestion.Title }} poster" />
+        {{ suggestion.Title }}
+      </div>
+    </div>
+    <button (click)="search()" class="search-button">Search</button>
+  </div>
+  <div *ngIf="movie">
+    <h2>{{ movie.Title }}</h2>
+    <img [src]="movie.Poster" alt="{{ movie.Title }} poster" />
+    <h3>Top 10 Reviews:</h3>
+    <ul>
+      <li *ngFor="let review of reviews">{{ review }}</li>
+    </ul>
+  </div>
