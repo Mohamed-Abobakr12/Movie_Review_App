@@ -1,88 +1,64 @@
-.input-container {
-  text-align: center;
-  margin: 0 auto;
-  width: 80%;
-}
+  .input-container input {width: 100%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;border: none;border-bottom: 2px solid #ccc;font-family: 'Brush Script MT', cursive;}
+  .input-container input:focus {outline: none;border-bottom: 2px solid #4CAF50;}
+  .input-container {text-align: center;margin: 0 auto;width: 80%;}
+  .suggestions-container {max-height: 70vh;overflow-y: auto;text-align: left;}
+  .suggestions-container div {font-size: 1em;}
+  .suggestions-container img {height: 10em;}
+  .search-button {width: 10%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;}
+  .search-button:hover {background-color: #45a049;}
+  .overflow{overflow: hidden;}
 
-.suggestions-container {
-  max-height: 70vh;
-  overflow-y: auto;
-  text-align: left;
-}
+  *{margin: 0;padding: 0;box-sizing: border-box;}
 
-.suggestions-container div {font-size: 1em;}
-.suggestions-container img {height: 10em;}
-.input-container input {width: 100%;}
-.search-button {width: 10%;}
+  @keyframes shootingStar 
+  {
+    0% {transform: translateX(0) translateY(0);opacity: 0;}
+    50% {opacity: 1;}
+    100% {transform: translateX(800px) translateY(-400px);opacity: 0;}
+  }
 
+  @keyframes animateBg 
+  {
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+  }
 
-@keyframes shootingStar 
-{
-  0% {transform: translateX(0) translateY(0);opacity: 0;}
-  50% {opacity: 1;}
-  100% {transform: translateX(1000px) translateY(-700px);opacity: 0;}
-}
+  @keyframes animate 
+  {
+    0%{transform: rotate(315deg) translateX(0);opacity: 1;}
+    70%{opacity: 1;}
+    100%{transform: rotate(315deg) translateX(-1500px);opacity: 0;}
+  }
 
-@keyframes animateBg 
-{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-}
+  span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1)  ;
+    animation:  animate 3s linear infinite;
+  }
 
-@keyframes animate 
-{
-  0%{transform: rotate(315deg) translateX(0);opacity: 1;}
-  70%{opacity: 1;}
-  100%{transform: rotate(315deg) translateX(-1500px);opacity: 0;}
-}
+  span::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff, transparent);
+  }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-section{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: url('https://mymodernmet.com/wp/wp-content/uploads/2019/06/nasa-free-photos-online-thumbnail.jpg');
-  background-position-x: center;
-  background-size: cover;
-  animation: animateBg 50s linear infinite;
-}
-
-span{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1)  ;
-  animation:  animate 3s linear infinite;
-}
-
-span::before{
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 1px;
-  background: linear-gradient(90deg, #fff, transparent);
-}
-
-span:nth-child(1){top: 0;right: 0;left:initial;animation-delay:0 ;animation-duration: 1s;}
-span:nth-child(2){top: 0;right: 80px;left:initial;animation-delay:0.2s;animation-duration: 3s;}
-span:nth-child(3){top: 80px;right: 0px;left:initial;animation-delay:0.4s ;animation-duration: 2s;}
-span:nth-child(4){top: 0;right: 180px;left:initial;animation-delay:0.6s;animation-duration: 1.5s;}
-span:nth-child(5){top: 0;right: 400px;left:initial;animation-delay:0.8s;animation-duration: 2.5s;}
-span:nth-child(6){top: 0;right: 600px;left:initial;animation-delay:1s ;animation-duration: 3s;}
-span:nth-child(7){top: 300px;right: 0px;left:initial;animation-delay:1s ;animation-duration: 1.75s;}
-span:nth-child(8){top: 0px;right: 700px;left:initial;animation-delay:1.4s ;animation-duration: 1.25s;}
-span:nth-child(9){top: 0px;right: 1000px;left:initial;animation-delay:0.75s ;animation-duration: 2.25s;}
-span:nth-child(10){top: 0px;right: 1000px;left:initial;animation-delay:2.75s ;animation-duration: 2.25s;}
+  span:nth-child(1){top: -5;right: 0;left:initial;animation-delay:0 ;animation-duration: 12s;}
+  span:nth-child(2){top: -5;right: 80px;left:initial;animation-delay:0.2s;animation-duration: 13s;}
+  span:nth-child(3){top: -80px;right: 10px;left:initial;animation-delay:0.4s ;animation-duration: 12s;}
+  span:nth-child(4){top: -5;right: 180px;left:initial;animation-delay:0.7s;animation-duration: 15s;}
+  span:nth-child(5){top: -15;right: 400px;left:initial;animation-delay:1.5s;animation-duration: 5s;}
+  span:nth-child(6){top: -15;right: 600px;left:initial;animation-delay:1.2s ;animation-duration: 32s;}
+  span:nth-child(7){top: -300px;right: 0px;left:initial;animation-delay:1.7s ;animation-duration: 8s;}
+  span:nth-child(8){top: -5px;right: 700px;left:initial;animation-delay:0.8s ;animation-duration: 125s;}
+  span:nth-child(9){top: -5px;right: 1000px;left:initial;animation-delay:0.5s ;animation-duration: 10s;}
+  span:nth-child(10){top:-5px;right: 1000px;left:initial;animation-delay:2s ;animation-duration: 15s;}

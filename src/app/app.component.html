@@ -1,19 +1,20 @@
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
+<div class="overflow">
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+  <span class="overflow"></span>
+</div> 
 
 <div class="input-container">
-
-  <input [formControl]="titleControl" placeholder="Enter movie title" />
-  <div *ngIf="filteredSuggestions | async as suggestions" class="suggestions-container">
-    <div *ngFor="let suggestion of suggestions" (click)="titleControl.setValue(suggestion.Title)">
+  <input [formControl]="titleControl" placeholder="Enter movie title"/>
+  <div *ngIf="filteredSuggestions.length > 0" class="suggestions-container">
+    <div *ngFor="let suggestion of filteredSuggestions" (click)="titleControl.setValue(suggestion.Title)">
       <img [src]="suggestion.Poster" alt="{{ suggestion.Title }} poster" />
       {{ suggestion.Title }}
     </div>
@@ -29,4 +30,3 @@
     <li *ngFor="let review of reviews">{{ review }}</li>
   </ul>
 </div>
-
