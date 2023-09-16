@@ -1,13 +1,20 @@
-  .input-container input {width: 100%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;border: none;border-bottom: 2px solid #ccc;font-family: 'Brush Script MT', cursive;}
+  .input-container input {width: 100%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;border: none;border-bottom: 2px solid #ccc;font-family: 'comic sans', cursive;}
   .input-container input:focus {outline: none;border-bottom: 2px solid #4CAF50;}
   .input-container {text-align: center;margin: 0 auto;width: 80%;}
-  .suggestions-container {max-height: 70vh;overflow-y: auto;text-align: left;}
+  .suggestions-container {max-height: 690px;overflow-y: auto;text-align: left;}
   .suggestions-container div {font-size: 1em;}
   .suggestions-container img {height: 10em;}
-  .search-button {width: 10%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;}
+  .search-button {width: 20%;background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;}
   .search-button:hover {background-color: #45a049;}
   .overflow{overflow: hidden;}
-
+  .suggestions-container {background-image: url('https://wallpaperaccess.com/full/219484.jpg');background-size: cover;}
+  .suggestions-container img {vertical-align: top;height: 190px;width: 140px;box-shadow: 0 0 10px rgba(0, 0, 255, 3);}
+  .suggestions-container div {margin-bottom: 15px;}
+  .suggestions-container .suggestion-item {display: flex; align-items: flex-start;padding: 10px 20px}
+  .suggestions-container .suggestion-text {margin-left: 10px;font-family: 'teimer web'; font-size: 1.5em; color: #000;font-weight: bold; }
+  .suggestions-container .separator {height: 2px;background-color: rgba(4, 4, 98, 0.5); width: 90%;margin: 10px auto; }
+  .suggestions-container {overflow-y: auto;}
+  
   *{margin: 0;padding: 0;box-sizing: border-box;}
 
   @keyframes shootingStar 

@@ -12,12 +12,15 @@
 </div> 
 
 <div class="input-container">
-  <input [formControl]="titleControl" placeholder="Enter movie title"/>
-  <div *ngIf="filteredSuggestions.length > 0" class="suggestions-container">
-    <div *ngFor="let suggestion of filteredSuggestions" (click)="titleControl.setValue(suggestion.Title)">
-      <img [src]="suggestion.Poster" alt="{{ suggestion.Title }} poster" />
-      {{ suggestion.Title }}
-    </div>
+  <input #searchBox [formControl]="titleControl" (focus)="onFocus()"  placeholder="Enter movie title"/>
+  <div #suggestionsContainer *ngIf="filteredSuggestions.length > 0" class="suggestions-container" (wheel)="onWheel($event)">
+    <ng-container *ngFor="let suggestion of filteredSuggestions; let i = index">
+      <div #suggestionElement class="suggestion-item">
+        <img [src]="suggestion.Poster" alt="{{ suggestion.Title }} poster" />
+        <p class="suggestion-text">{{ suggestion.Title }}</p>
+      </div>
+      <div *ngIf="i < filteredSuggestions.length - 1" class="separator"></div>
+    </ng-container>
   </div>
   <button (click)="search()" class="search-button">Search</button>
 </div>
